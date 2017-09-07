@@ -1,19 +1,19 @@
 
 #include <stdio.h>
 
-// Å¥ Å©±â
+
 #define SIZE 5
 
 
 int front = -1, rear = -1;
 
 
-int Queue[SIZE];
+int Queue[MAX];
 
 
 void push(int data)
 {
-	if (rear >= SIZE)
+	if (rear >= MAX)
 	{
 		puts("OVERFLOW");
 		return;

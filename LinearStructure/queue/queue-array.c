@@ -1,7 +1,7 @@
 
 #include <stdio.h>
 
-// ť ũ��
+// Å¥ Å©±â
 #define SIZE 5
 
 

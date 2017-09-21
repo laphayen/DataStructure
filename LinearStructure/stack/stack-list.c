@@ -51,5 +51,28 @@ void top()
 
 void main()
 {
+head = (NODE*)malloc(sizeof(NODE));
+	tail = (NODE*)malloc(sizeof(NODE));
+	head->next = tail;
+	tail->prev = head; 
 
+	push(10); 
+	top();
+	push(20);
+	top();
+	push(30);
+	top();
+	push(40);
+	top(); 
+	pop();
+	top();
+
+	pop();
+	top();
+	pop();
+	top();
+	pop();
+	top();
+	pop();
+	top();
 }

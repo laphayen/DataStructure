@@ -2,15 +2,15 @@
 #include<stdlib.h> 
 
 typedef struct treeNode {
-	char key;                //µ¥ÀÌÅÍ ÇÊµå
-	struct treeNode* left;     //¿ŞÂÊ ¼­ºêÆ®¸® ¸µÅ© ÇÊµå
-	struct treeNode* right;    //¿À¸¥ÂÊ ¼­ºêÆ®¸® ¸µÅ© ÇÊµå
+	char key;                //ë°ì´í„° í•„ë“œ
+	struct treeNode* left;     //ì™¼ìª½ ì„œë¸ŒíŠ¸ë¦¬ ë§í¬ í•„ë“œ
+	struct treeNode* right;    //ì˜¤ë¥¸ìª½ ì„œë¸ŒíŠ¸ë¦¬ ë§í¬ í•„ë“œ
 } treeNode; 
 
-typedef char element;  //charÀ» ÀÌÁø Å½»ö Æ®¸® elementÀÇ ÀÚ·áÇüÀ¸·Î Á¤ÀÇ
+typedef char element;  //charì„ ì´ì§„ íƒìƒ‰ íŠ¸ë¦¬ elementì˜ ìë£Œí˜•ìœ¼ë¡œ ì •ì˜
 
 treeNode* insertNode(treeNode *p, char x) 
-{    //Æ÷ÀÎÅÍ p°¡ °¡¸®Å°´Â ³ëµå¿Í ºñ±³ÇÏ¿© ³ëµå x¸¦ »ğÀÔÇÏ´Â ¿¬»ê
+{    //í¬ì¸í„° pê°€ ê°€ë¦¬í‚¤ëŠ” ë…¸ë“œì™€ ë¹„êµí•˜ì—¬ ë…¸ë“œ xë¥¼ ì‚½ì…í•˜ëŠ” ì—°ì‚°
  	  treeNode *newNode;	
 	  if (p == NULL){ 
         	newNode = (treeNode*)malloc(sizeof(treeNode)); 
@@ -21,29 +21,29 @@ treeNode* insertNode(treeNode *p, char x)
 	  } 
 	  else if (x < p->key)  p->left = insertNode(p->left, x);        
 	  else if (x > p->key)  p->right = insertNode(p->right, x); 
-	  else  printf("\n ÀÌ¹Ì °°Àº Å°°¡ ÀÖ½À´Ï´Ù! \n"); 
+	  else  printf("\n ì´ë¯¸ ê°™ì€ í‚¤ê°€ ìˆìŠµë‹ˆë‹¤! \n"); 
 
 	  return p;	 
 } 
 
 void deleteNode(treeNode *root, element key)
-{     //root ³ëµåºÎÅÍ Å½»öÇÏ¿© key °ª°ú °°Àº ³ëµå¸¦ Ã£¾Æ »èÁ¦ÇÏ´Â ¿¬»ê
+{     //root ë…¸ë“œë¶€í„° íƒìƒ‰í•˜ì—¬ key ê°’ê³¼ ê°™ì€ ë…¸ë“œë¥¼ ì°¾ì•„ ì‚­ì œí•˜ëŠ” ì—°ì‚°
 	treeNode *parent, *p, *succ, *succ_parent;
 	treeNode *child;
 
 	parent=NULL;
 	p=root; 
-	while((p != NULL) && (p->key != key)){  //»èÁ¦ÇÒ ³ëµåÀÇ À§Ä¡ Å½»ö
+	while((p != NULL) && (p->key != key)){  //ì‚­ì œí•  ë…¸ë“œì˜ ìœ„ì¹˜ íƒìƒ‰
 		parent=p;
 		if(key < p->key) p=p->left;
 		else p=p->right;
  	}
-	if(p == NULL){  //»èÁ¦ÇÒ ³ëµå°¡ ¾ø´Â °æ¿ì
-		printf("\n Ã£´Â Å°°¡ ÀÌÁøÆ®¸®¿¡ ¾ø½À´Ï´Ù!!");
+	if(p == NULL){  //ì‚­ì œí•  ë…¸ë“œê°€ ì—†ëŠ” ê²½ìš°
+		printf("\n ì°¾ëŠ” í‚¤ê°€ ì´ì§„íŠ¸ë¦¬ì— ì—†ìŠµë‹ˆë‹¤!!");
 		return;
 	}
 
-	// »èÁ¦ÇÒ ³ëµå°¡ ´Ü¸»³ëµåÀÎ °æ¿ì
+	// ì‚­ì œí•  ë…¸ë“œê°€ ë‹¨ë§ë…¸ë“œì¸ ê²½ìš°
 	if((p->left == NULL) && (p->right == NULL)){
 		if(parent != NULL){
 			if(parent->left == p) parent->left=NULL;
@@ -52,7 +52,7 @@ void deleteNode(treeNode *root, element key)
 		else root=NULL;
 	}
 
-	// »èÁ¦ÇÒ ³ëµå°¡ ÇÑ °³ÀÇ ÀÚ½Ä³ëµå¸¦ °¡Áø °æ¿ì
+	// ì‚­ì œí•  ë…¸ë“œê°€ í•œ ê°œì˜ ìì‹ë…¸ë“œë¥¼ ê°€ì§„ ê²½ìš°
 	else if((p->left == NULL) || (p->right == NULL)){
 		if(p->left != NULL) child=p->left;
 		else child=p->right;
@@ -64,7 +64,7 @@ void deleteNode(treeNode *root, element key)
 		else root=child;
 	}
 
-	// »èÁ¦ÇÒ ³ëµå°¡ µÎ °³ÀÇ ÀÚ½Ä³ëµå¸¦ °¡Áø °æ¿ì
+	// ì‚­ì œí•  ë…¸ë“œê°€ ë‘ ê°œì˜ ìì‹ë…¸ë“œë¥¼ ê°€ì§„ ê²½ìš°
 	else{
 		succ_parent=p;
 		succ=p-> left;
@@ -81,7 +81,7 @@ void deleteNode(treeNode *root, element key)
 }
 
 treeNode* searchBST(treeNode* root, char x) 
-{    //ÀÌÁø Å½»ö Æ®¸®¿¡¼­ Å¶°ªÀÌ xÀÎ ³ëµåÀÇ À§Ä¡¸¦ Å½»öÇÏ´Â ¿¬»ê
+{    //ì´ì§„ íƒìƒ‰ íŠ¸ë¦¬ì—ì„œ í‚·ê°’ì´ xì¸ ë…¸ë“œì˜ ìœ„ì¹˜ë¥¼ íƒìƒ‰í•˜ëŠ” ì—°ì‚°
  	 treeNode* p; 
 	 p = root; 
 	 while (p != NULL){ 
@@ -89,12 +89,12 @@ treeNode* searchBST(treeNode* root, char x)
 		else if (x == p->key) return p; 
 		else p = p->right; 
 	 } 
-	printf("\n Ã£´Â Å°°¡ ¾ø½À´Ï´Ù!");	 
+	printf("\n ì°¾ëŠ” í‚¤ê°€ ì—†ìŠµë‹ˆë‹¤!");	 
 	return p; 
 } 
 
 void displayInorder(treeNode* root)
-{    //ÀÌÁø Å½»ö Æ®¸®¸¦ ÁßÀ§ ¼øÈ¸ÇÏ¸é¼­ Ãâ·ÂÇÏ´Â ¿¬»ê
+{    //ì´ì§„ íƒìƒ‰ íŠ¸ë¦¬ë¥¼ ì¤‘ìœ„ ìˆœíšŒí•˜ë©´ì„œ ì¶œë ¥í•˜ëŠ” ì—°ì‚°
 	if(root){		
 		displayInorder(root->left);
 		printf("%c_", root->key);
@@ -105,13 +105,13 @@ void displayInorder(treeNode* root)
 void menu()
 {
 	printf("\n*---------------------------*");
-	printf("\n\t1 : Æ®¸® Ãâ·Â");
-	printf("\n\t2 : ¹®ÀÚ »ğÀÔ");
-	printf("\n\t3 : ¹®ÀÚ »èÁ¦");
-	printf("\n\t4 : ¹®ÀÚ °Ë»ö");
-	printf("\n\t5 : Á¾·á"); 
+	printf("\n\t1 : íŠ¸ë¦¬ ì¶œë ¥");
+	printf("\n\t2 : ë¬¸ì ì‚½ì…");
+	printf("\n\t3 : ë¬¸ì ì‚­ì œ");
+	printf("\n\t4 : ë¬¸ì ê²€ìƒ‰");
+	printf("\n\t5 : ì¢…ë£Œ"); 
 	printf("\n*---------------------------*");
-	printf("\n¸Ş´ºÀÔ·Â >> ");
+	printf("\në©”ë‰´ì…ë ¥ >> ");
 }
 
 int main() 
@@ -120,7 +120,7 @@ int main()
 	treeNode* foundedNode = NULL; 
 	char choice, key;
 
-	root=insertNode(root, 'G');  //Æ®¸® ¸¸µé±â
+	root=insertNode(root, 'G');  //íŠ¸ë¦¬ ë§Œë“¤ê¸°
 	insertNode(root, 'I'); 
 	insertNode(root, 'H'); 
 	insertNode(root, 'D'); 
@@ -137,31 +137,31 @@ int main()
 		choice = getchar(); getchar();
 
 		switch(choice-'0'){
-			case 1 :	printf("\t[ÀÌÁøÆ®¸® Ãâ·Â]  ");
+			case 1 :	printf("\t[ì´ì§„íŠ¸ë¦¬ ì¶œë ¥]  ");
 				displayInorder(root);  printf("%n");
 				break;
 				
-			case 2 :	printf("»ğÀÔÇÒ ¹®ÀÚ¸¦ ÀÔ·ÂÇÏ¼¼¿ä : "); 
+			case 2 :	printf("ì‚½ì…í•  ë¬¸ìë¥¼ ì…ë ¥í•˜ì„¸ìš” : "); 
 				key = getchar(); getchar();
 				insertNode(root, key);
 				break;
 
-			case 3 :	printf("»èÁ¦ÇÒ ¹®ÀÚ¸¦ ÀÔ·ÂÇÏ¼¼¿ä : "); 
+			case 3 :	printf("ì‚­ì œí•  ë¬¸ìë¥¼ ì…ë ¥í•˜ì„¸ìš” : "); 
 				key = getchar(); getchar();
 				deleteNode(root, key);
 				break;
 
-			case 4 : printf("Ã£À» ¹®ÀÚ¸¦ ÀÔ·ÂÇÏ¼¼¿ä : "); 
+			case 4 : printf("ì°¾ì„ ë¬¸ìë¥¼ ì…ë ¥í•˜ì„¸ìš” : "); 
 				key = getchar(); getchar();
 				foundedNode = searchBST(root, key); 
 				if (foundedNode != NULL)  
-					  printf("\n %c ¸¦ Ã£¾Ò½À´Ï´Ù! \n", foundedNode->key); 
-				else  printf("\n ¹®ÀÚ¸¦ Ã£Áö ¸øÇß½À´Ï´Ù. \n"); 		
+					  printf("\n %c ë¥¼ ì°¾ì•˜ìŠµë‹ˆë‹¤! \n", foundedNode->key); 
+				else  printf("\n ë¬¸ìë¥¼ ì°¾ì§€ ëª»í–ˆìŠµë‹ˆë‹¤. \n"); 		
 				break;
 
 			case 5 : 	return 0; 
 
-			default : printf("¾ø´Â ¸Ş´ºÀÔ´Ï´Ù. ¸Ş´º¸¦ ´Ù½Ã ¼±ÅÃÇÏ¼¼¿ä! \n");
+			default : printf("ì—†ëŠ” ë©”ë‰´ì…ë‹ˆë‹¤. ë©”ë‰´ë¥¼ ë‹¤ì‹œ ì„ íƒí•˜ì„¸ìš”! \n");
 				break;
 		}
 	}

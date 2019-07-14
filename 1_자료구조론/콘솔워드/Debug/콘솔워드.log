@@ -1,0 +1,5 @@
+﻿  word.cpp
+d:\2017 비트 단기\수업자료\자료구조\1_자료구조론\콘솔워드\word.cpp(41): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+  콘솔워드.vcxproj -> D:\2017 비트 단기\수업자료\자료구조\1_자료구조론\Debug\콘솔워드.exe
+  콘솔워드.vcxproj -> D:\2017 비트 단기\수업자료\자료구조\1_자료구조론\Debug\콘솔워드.pdb (Full PDB)

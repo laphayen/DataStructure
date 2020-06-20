@@ -1,7 +1,0 @@
-﻿  BookManager.c
-d:\2017 비트 단기\수업자료\자료구조\1_자료구조론\도서관리_이중연결리스트\bookmanager.c(44): warning C4013: 'exit' undefined; assuming extern returning int
-d:\2017 비트 단기\수업자료\자료구조\1_자료구조론\도서관리_이중연결리스트\bookmanager.c(38): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1270): note: see declaration of 'scanf'
-d:\2017 비트 단기\수업자료\자료구조\1_자료구조론\도서관리_이중연결리스트\bookmanager.c(57): warning C4013: 'gets' undefined; assuming extern returning int
-  도서관리_이중연결리스트.vcxproj -> D:\2017 비트 단기\수업자료\자료구조\1_자료구조론\Debug\도서관리_이중연결리스트.exe
-  도서관리_이중연결리스트.vcxproj -> D:\2017 비트 단기\수업자료\자료구조\1_자료구조론\Debug\도서관리_이중연결리스트.pdb (Full PDB)

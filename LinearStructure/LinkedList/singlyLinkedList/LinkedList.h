@@ -18,4 +18,4 @@ void SSL_RemoveNode(Node** Head, Node* Remove);
 Node* SLL_GetNode(Node* Head, int Location);
 int SLL_GetNodeCount(Node* Head);
 
-#endif // LINKEDLIST_H
+#endif LINKEDLIST_H

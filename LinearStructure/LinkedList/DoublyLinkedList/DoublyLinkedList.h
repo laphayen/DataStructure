@@ -11,7 +11,7 @@ typedef struct tagNode
     struct tagNode* NextNode;
 } Node;
 
-Node* DLL_CreateNode(int NewData);
+Node* DLL_CreateNode(int Data);
 void  DLL_DestroyNode(Node* Node);
 void  DLL_AppendNode(Node** Head, Node* NewNode);
 void  DLL_InsertNode(Node* Current, Node* NewNode);

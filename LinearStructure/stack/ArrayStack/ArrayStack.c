@@ -1,5 +1,6 @@
 #include "ArrayStack.h"
 
+// AS 생성
 void AS_CreateStack(ArrayStack** Stack, int Capacity)
 {
 	(*Stack) = (ArrayStack*)malloc(sizeof(ArrayStack));
@@ -10,6 +11,7 @@ void AS_CreateStack(ArrayStack** Stack, int Capacity)
 	(*Stack)->Top = 0;
 }
 
+// AS 소멸
 void AS_DestroyStack(ArrayStack* Stack)
 {
 	free(Stack->Nodes);
@@ -17,6 +19,7 @@ void AS_DestroyStack(ArrayStack* Stack)
 	free(Stack);
 }
 
+// AS Push
 void AS_Push(ArrayStack* Stack, ElementType Data)
 {
 	int Position = Stack->Top;
@@ -25,6 +28,7 @@ void AS_Push(ArrayStack* Stack, ElementType Data)
 	Stack->Top++;
 }
 
+// AS Pop
 ElementType AS_Pop(ArrayStack* Stack)
 {
 	int Position = --(Stack->Top);
@@ -32,6 +36,7 @@ ElementType AS_Pop(ArrayStack* Stack)
 	return Stack->Nodes[Position].Data;
 }
 
+// AS Top
 ElementType AS_Top(ArrayStack* Stack)
 {
 	int Position = Stack->Top - 1;

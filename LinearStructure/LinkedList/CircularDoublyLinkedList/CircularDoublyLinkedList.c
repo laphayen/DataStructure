@@ -36,6 +36,7 @@ void CDLL_AppendNode(Node** Head, Node* NewNode)
     }
 }
 
+// CDLL 노드 삽입
 void CDLL_InsertNode(Node* Current, Node* NewNode)
 {
     NewNode->NextNode = Current->NextNode;
@@ -48,6 +49,7 @@ void CDLL_InsertNode(Node* Current, Node* NewNode)
     }
 }
 
+// CDLL 노드 삭제
 void CDLL_Remove(Node** Head, Node* Remove)
 {
     if (*Head == Remove)
@@ -72,6 +74,7 @@ void CDLL_Remove(Node** Head, Node* Remove)
     }
 }
 
+//
 Node* CDLL_GetNode(Node* Head, int Location)
 {
     Node* Current = Head;
@@ -83,6 +86,7 @@ Node* CDLL_GetNode(Node* Head, int Location)
     return Current;
 }
 
+// CDLL 노드 개수
 int CDLL_CountNode(Node* Head)
 {
     unsigned int Count = 0;

@@ -36,7 +36,7 @@ void CDLL_AppendNode(Node** Head, Node* NewNode)
     }
 }
 
-void CDLL_Insert(Node* Current, Node* NewNode)
+void CDLL_InsertNode(Node* Current, Node* NewNode)
 {
     NewNode->NextNode = Current->NextNode;
     NewNode->PrevNode - Current;

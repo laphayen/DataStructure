@@ -14,8 +14,8 @@ typedef struct tagNode
 Node* CDLL_CreateNode(int Data);
 void CDLL_DestroyNode(Node* Node);
 void CDLL_AppendNode(Node** Head, Node* NewNode);
-void CDLL_Insert(Node* Current, Node* NewNode);
-void CDLL_Remove(Node** Head, Node* Remove);
+void CDLL_InsertNode(Node* Current, Node* NewNode);
+void CDLL_RemoveNode(Node** Head, Node* Remove);
 Node* CDLL_GetNode(Node* Head, int Location);
 int CDLL_CountNode(Node* Head);
 

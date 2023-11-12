@@ -1,40 +1,51 @@
 #include "LinkedListStack.h"
 
+// LLS 생성
 void LLS_CreateStack(LinkedListStack** Stack)
 {
+    /// 스택을 자유 저장소에 할당
     (*Stack) = (LinkedListStack*)malloc(sizeof(LinkedListStack));
+
+    // 스택 초기화
     (*Stack)->List = NULL;
     (*Stack)->Top = NULL;
 }
 
+// LLS 소멸
 void LLS_DestroyStack(LinkedListStack* Stack)
 {
-    while (!LLS_IsEmpty(Stack))
+    // 스택에 쌓여있는 노드를 모두 제거
+    while (!LLS_IsEmpty(Stack)) // Stack->Top != NULL
     {
         Node* Popped = LLS_Pop(Stack);
         LLS_DestroyNode(Popped);
     }
+
+    // 스택을 자유 저장소에서 해제
     free(Stack);
 }
 
-Node* LLS_CreateStack(char* NewData)
+// LLS 노드 생성
+Node* LLS_CreateNode(ElementType Data)
 {
+    // 노드를 자유 저장소에 할당
     Node* NewNode = (Node*)malloc(sizeof(Node));
-    NewNode->Data = (char*)malloc(strlen(NewData)+1);
 
-    strcpy(NewNode->Data, NewData);
+    // 노드 초기화
+    NewNode->Data = Data;
+    NewNode->Next = NULL;
 
-    NewNode->NextNode = NULL;
-
+    // 생성한 노드의 주소값 반환
     return NewNode;
 }
 
-void LLS_DestroyNode(Node* _Node)
+// LLS 노드 소멸
+void LLS_DestroyNode(Node* Node)
 {
-    free(_Node->Data);
-    free(_Node);
+    free(Node);
 }
 
+// LLS 데이터 삽입
 void LLS_Push(LinkedListStack* Stack, Node* NewNode)
 {
     if (Stack->List == NULL)
@@ -44,15 +55,19 @@ void LLS_Push(LinkedListStack* Stack, Node* NewNode)
     else
     {
         Node* OldTop = Stack->List;
-        while (OldTop->NextNode != NULL)
+
+        while (OldTop->Next != NULL)
         {
-            OldTop = OldTop->NextNode;
+            OldTop = OldTop->Next;
         }
-        OldTop->NextNode = NewNode;
+
+        OldTop->Next = NewNode;
     }
+
     Stack->Top = NewNode;
 }
 
+// LLS 데이터 제거
 Node* LLS_Pop(LinkedListStack* Stack)
 {
     Node* TopNode = Stack->Top;
@@ -64,22 +79,27 @@ Node* LLS_Pop(LinkedListStack* Stack)
     }
     else
     {
-        Node* CurrentTop = Stack->List;
-        while (CurrentTop != NULL && CurrentTop->NextNode != Stack->Top)
+        Node* CurrTop = Stack->List;
+
+        while (CurrTop != NULL && CurrTop->Next != Stack->Top)
         {
-            CurrentTop = CurrentTop->NextNode;
+            CurrTop = CurrTop->Next;
         }
-        Stack->Top = CurrentTop;
-        CurrentTop->NextNode = NULL;
+
+        Stack->Top = CurrTop;
+        CurrTop->Next = NULL;
     }
+
     return TopNode;
 }
 
-Node** LLS_Top(LinkedListStack* Stack)
+// LLS 맨 위 노드 반환
+Node* LLS_Top(LinkedListStack* Stack)
 {
     return Stack->Top;
 }
 
+// LLS 크기 반환
 int LLS_GetSize(LinkedListStack* Stack)
 {
     int Count = 0;
@@ -87,12 +107,14 @@ int LLS_GetSize(LinkedListStack* Stack)
 
     while(Current != NULL)
     {
-        Current = Current->NextNode;
+        Current = Current->Next;
         Count++;
     }
+
     return Count;
 }
 
+// LLS 비어있는지 여부
 int LLS_IsEmpty(LinkedListStack* Stack)
 {
     return (Stack->List == NULL);

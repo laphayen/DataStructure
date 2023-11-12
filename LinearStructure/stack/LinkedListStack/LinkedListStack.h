@@ -5,13 +5,17 @@
 #include <string.h>
 #include <stdlib.h>
 
-typedef struct tagNode
+typedef int ElementType;
+
+// 스택의 노드 구조체
+typedef struct Node
 {
-    char* Data;
-    struct tageNode* NextNode;
+    ElementType Data;
+    struct Node* Next;
 } Node;
 
-typedef struct tagLinkedListStack
+// 스택 구조체
+typedef struct LinkedListStack
 {
     Node* List;
     Node* Top;
@@ -20,12 +24,11 @@ typedef struct tagLinkedListStack
 void LLS_CreateStack(LinkedListStack** stack);
 void LLS_DestroyStack(LinkedListStack* Stack);
 
-Node* LLS_CreateStack(char* Data);
-void LLS_DestroyNode(Node* _Node);
+Node* LLS_CreateNode(char* Data);
+void LLS_DestroyNode(Node* Node);
 
-void LLS_Push(LinkedListStack* Stack);
+void LLS_Push(LinkedListStack* Stack, ElementType Data);
 Node* LLS_Pop(LinkedListStack* Stack);
-
 Node* LLS_Top(LinkedListStack* Stack);
 int LLS_GetSize(LinkedListStack* Stack);
 int LLS_IsEmpty(LinkedListStack* Stack);

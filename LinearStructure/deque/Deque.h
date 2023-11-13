@@ -15,22 +15,22 @@ typedef struct Node
 } Node;
 
 // 덱 구조체
-typedef struct Deque
+typedef struct LinkedDeque
 {
     Node* Front;
     Node* Rear;
     int Count;
-} Deque;
+} LinkedDeque;
 
-void DQ_CreateDeque(Deque** Deque);
-void DQ_DestroyDeque(Deque* Deque);
+void DQ_CreateDeque(LinkedDeque** Deque);
+void DQ_DestroyDeque(LinkedDeque* Deque);
 
 Node* DQ_CreateNode(ElementType NewData);
 void DQ_DestroyNode(Node* Node);
 
-void DQ_PushFront(Deque* Deque, Node* NewNode);
-void DQ_PushRear(Deque* Deque, Node* NewNode);
-void DQ_PopFront(Deque* Deque);
-void DQ_PopRear(Deque* Deque);
+void DQ_PushFront(LinkedDeque* Deque, Node* NewNode);
+void DQ_PushRear(LinkedDeque* Deque, Node* NewNode);
+void DQ_PopFront(LinkedDeque* Deque);
+void DQ_PopRear(LinkedDeque* Deque);
 
 #endif // DEQUE_H

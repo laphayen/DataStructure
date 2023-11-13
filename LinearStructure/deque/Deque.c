@@ -1,28 +1,31 @@
 #include "Deque.h"
 
 // DQ 생성
-void DQ_CreateDeque(Deque** Deque)
+void DQ_CreateDeque(LinkedDeque** Deque)
 {
     // 덱을 자유 저장소에 할당
-    (*Deque) = (Deque*)malloc(sizeof(Deque));
+    (*Deque) = (LinkedDeque*)malloc(sizeof(LinkedDeque));
 
     // 덱 초기화
     (*Deque)->Front = NULL;
     (*Deque)->Rear = NULL;
     (*Deque)->Count = 0;
+
 }
 
 // DQ 소멸
-void DQ_DestroyDeque(Deque* Deque)
+void DQ_DestroyDeque(LinkedDeque* Deque)
 {
-    // 덱에 쌓여있는 노드를 모두 제거
-    while (!DQ_IsEmpty(Deque))
+    Node* Current = Deque->Front;
+    Node* Next = NULL;
+
+    while (Current != NULL)
     {
-        Node* Popped = DQ_PopFront(Deque);
-        DQ_DestroyNode(Popped);
+        Next = Current->NextNode;
+        DQ_DestroyNode(Current);
+        Current = Next;
     }
 
-    // 덱을 자유 저장소에서 해제
     free(Deque);
 }
 
@@ -48,7 +51,7 @@ void DQ_DestroyNode(Node* Node)
 }
 
 // DQ 데이터 Front 삽입
-void DQ_PushFront(Deque* Deque, Node* NewNode)
+void DQ_PushFront(LinkedDeque* Deque, Node* NewNode)
 {
     if (Deque->Front == NULL)
     {
@@ -66,7 +69,7 @@ void DQ_PushFront(Deque* Deque, Node* NewNode)
 }
 
 // DQ 데이터 Rear 삽입
-void DQ_PushRear(Deque* Deque, Node* NewNode)
+void DQ_PushRear(LinkedDeque* Deque, Node* NewNode)
 {
     if (Deque->Rear == NULL)
     {
@@ -84,7 +87,7 @@ void DQ_PushRear(Deque* Deque, Node* NewNode)
 }
 
 // DQ 데이터 Front 제거
-void DQ_PopFront(Deque* Deque)
+void DQ_PopFront(LinkedDeque* Deque)
 {
     Node* Front = Deque->Front;
 
@@ -105,7 +108,7 @@ void DQ_PopFront(Deque* Deque)
 }
 
 // DQ 데이터 Rear 제거
-void DQ_PopRear(Deque* Deque)
+void DQ_PopRear(LinkedDeque* Deque)
 {
     Node* Rear = Deque->Rear;
 

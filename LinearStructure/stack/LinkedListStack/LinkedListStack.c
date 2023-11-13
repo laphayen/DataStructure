@@ -3,7 +3,7 @@
 // LLS 생성
 void LLS_CreateStack(LinkedListStack** Stack)
 {
-    /// 스택을 자유 저장소에 할당
+    // 스택을 자유 저장소에 할당
     (*Stack) = (LinkedListStack*)malloc(sizeof(LinkedListStack));
 
     // 스택 초기화
@@ -26,13 +26,13 @@ void LLS_DestroyStack(LinkedListStack* Stack)
 }
 
 // LLS 노드 생성
-Node* LLS_CreateNode(ElementType Data)
+Node* LLS_CreateNode(ElementType NewData)
 {
     // 노드를 자유 저장소에 할당
     Node* NewNode = (Node*)malloc(sizeof(Node));
 
     // 노드 초기화
-    NewNode->Data = Data;
+    NewNode->Data = NewData;
     NewNode->Next = NULL;
 
     // 생성한 노드의 주소값 반환

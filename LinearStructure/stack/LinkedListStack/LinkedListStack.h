@@ -24,10 +24,10 @@ typedef struct LinkedListStack
 void LLS_CreateStack(LinkedListStack** stack);
 void LLS_DestroyStack(LinkedListStack* Stack);
 
-Node* LLS_CreateNode(char* Data);
+Node* LLS_CreateNode(ElementType NewData);
 void LLS_DestroyNode(Node* Node);
 
-void LLS_Push(LinkedListStack* Stack, ElementType Data);
+void LLS_Push(LinkedListStack* Stack, Node* NewNode);
 Node* LLS_Pop(LinkedListStack* Stack);
 Node* LLS_Top(LinkedListStack* Stack);
 int LLS_GetSize(LinkedListStack* Stack);

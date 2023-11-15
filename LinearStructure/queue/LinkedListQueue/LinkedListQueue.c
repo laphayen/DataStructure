@@ -22,6 +22,7 @@ void LLQ_DestroyQueue(LinkedListQueue* Queue)
 		LLQ_DestroyNode(Popped);
 	}
 
+	// 큐를 자유 저장소에서 해제
 	free(Queue);
 }
 

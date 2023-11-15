@@ -5,6 +5,7 @@
 #include <string.h>
 #include <stdlib.h>
 
+// 큐 데이터 타입 정의
 typedef int ElementType;
 
 // 연결 리스트 큐 노드 구조체
@@ -17,9 +18,9 @@ typedef struct Node
 // 연결 리스트 큐 구조체
 typedef struct LinkedListQueue
 {
-	Node* Front;
-	Node* Rear;
-	int Count;
+	Node* Front;	// 큐의 전단 노드
+	Node* Rear;		// 큐의 후단 노드
+	int Count;		// 큐의 노드 개수
 } LinkedListQueue;
 
 void LLQ_CreateQueue(LinkedListQueue** Queue);

@@ -1,10 +1,10 @@
-#include "LinkedQueue.h"
+#include "LinkedListQueue.h"
 
-// LQ 생성
-void LQ_CreateQueue(LinkedQueue** Queue)
+// LLQ 생성
+void LLQ_CreateQueue(LinkedListQueue** Queue)
 {
 	// 큐를 자유저장소에 할당
-	(*Queue) = (LinkedQueue*)malloc(sizeof(LinkedQueue));
+	(*Queue) = (LinkedListQueue*)malloc(sizeof(LinkedListQueue));
 
 	// 큐 Front, Rear, Count 초기화
 	(*Queue)->Front = NULL;
@@ -12,21 +12,21 @@ void LQ_CreateQueue(LinkedQueue** Queue)
 	(*Queue)->Count = 0;
 }
 
-// LQ 소멸
-void LQ_DestroyQueue(LinkedQueue* Queue)
+// LLQ 소멸
+void LLQ_DestroyQueue(LinkedListQueue* Queue)
 {
 	// 큐의 노드를 자유 저장소에서 해제
-	while (!LQ_IsEmpty(Queue))
+	while (!LLQ_IsEmpty(Queue))
 	{
-		Node* Popped = LQ_Dequeue(Queue);
-		LQ_DestroyNode(Popped);
+		Node* Popped = LLQ_Dequeue(Queue);
+		LLQ_DestroyNode(Popped);
 	}
 
 	free(Queue);
 }
 
 // LQ 노드 생성
-Node* LQ_CreateNode(char* NewData)
+Node* LLQ_CreateNode(char* NewData)
 {
 	// 노드를 자유 저장소에 할당
 	Node* NewNode = (Node*)malloc(sizeof(Node));
@@ -39,14 +39,14 @@ Node* LQ_CreateNode(char* NewData)
 	return NewNode;
 }
 
-// LQ 노드 소멸
-void LQ_DestroyNode(Node* _Node)
+// LLQ 노드 소멸
+void LLQ_DestroyNode(Node* _Node)
 {
 	free(_Node);
 }
 
-// LQ 데이터 삽입
-void LQ_Enqueue(LinkedQueue* Queue, Node* NewNode)
+// LLQ 데이터 삽입
+void LLQ_Enqueue(LinkedListQueue* Queue, Node* NewNode)
 {
 	// 노드가 없을 경우(큐가 빈 경우)
 	if (Queue->Front == NULL)
@@ -65,7 +65,7 @@ void LQ_Enqueue(LinkedQueue* Queue, Node* NewNode)
 }
 
 // LQ 데이터 제거
-Node* LQ_Dequeue(LinkedQueue* Queue)
+Node* LLQ_Dequeue(LinkedListQueue* Queue)
 {
 	Node* Front = Queue->Front;
 
@@ -81,13 +81,14 @@ Node* LQ_Dequeue(LinkedQueue* Queue)
 		Queue->Front = Queue->Front->NextNode;
 	}
 
+	// 큐의 노드 개수 감소
 	Queue->Count--;
 
 	return Front;
 }
 
-// LQ가 비어있는지 확인
-int LQ_IsEmpty(LinkedQueue* Queue)
+// LLQ가 비어있는지 확인
+int LLQ_IsEmpty(LinkedListQueue* Queue)
 {
 	return (Queue->Front == NULL);
 }

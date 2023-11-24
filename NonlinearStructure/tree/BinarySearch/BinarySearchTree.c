@@ -84,6 +84,21 @@ BSTNode* BST_SearcMinNode(BSTNode* Tree)
         return BST_SearchMinNode(Tree->Left);
 }
 
+// 트리의 최대 노드 탐색
+BSTNode* BST_SearchMaxNode(BSTNode* Tree)
+{
+    // 트리가 NULL인 경우
+    if (Tree == NULL)
+        return NULL;
+
+    // 트리의 오른쪽 자식 노드가 없는 경우
+    if (Tree->Right == NULL)
+        return Tree;
+    // 트리의 오른쪽 자식 노드가 있는 경우
+    else
+        return BST_SearchMaxNode(Tree->Right);
+}
+
 // 트리의 노드 삽입
 void BST_InsertNode(BSTNode* Tree, BSTNode *Child)
 {
